@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://bhksqj23hhrde"]
+
+[ext_resource type="Script" path="res://scenes/pane.gd" id="1_w4k6e"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4pe40"]
+
+[sub_resource type="Gradient" id="Gradient_177pl"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.997326)
+colors = PackedColorArray(0.12549, 0.223529, 0.286275, 0.768627, 0.172859, 0.29341, 0.371334, 0.784314)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_keqkr"]
+noise_type = 4
+frequency = 0.001
+fractal_lacunarity = 4.5
+fractal_gain = 2.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1hltx"]
+seamless = true
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_177pl")
+noise = SubResource("FastNoiseLite_keqkr")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7a8k0"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_wcjoe"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.149502, 0.837209, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.0352941, 0.0352941, 0.0352941, 1, 0.0352941, 0.0352941, 0.0352941, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ta2eo"]
+gradient = SubResource("Gradient_wcjoe")
+height = 1080
+fill_to = Vector2(0, 1)
+
+[node name="MarginContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 880.0
+offset_bottom = 312.0
+script = ExtResource("1_w4k6e")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("CanvasItemMaterial_4pe40")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_1hltx")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+material = SubResource("CanvasItemMaterial_7a8k0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ta2eo")
+expand_mode = 1

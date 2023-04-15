@@ -1,0 +1,11 @@
+~ starter
+
+Queen Axoltl: Hello my newest assistant! I'm very glad to have you here, as I have many important tasks for you! We should start with..[wait=1] Wait, what's your name?
+- You don't know my name?
+	Queen Axoltl: Well no, I can't be expected to remember the names of everyone in the entire kingdom
+	Queen Axoltl: So,[do EventMaster.InputName()] what is your name?
+	Queen Axoltl: That's gonna be so hard to remember! I think i will just call you assistant, is that fine with you? I'm sure it's fine with you
+- I don't know my name
+	Queen Axoltl: That's fine, I guess i will just call you assistant then
+
+=> starter

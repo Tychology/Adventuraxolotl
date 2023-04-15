@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://do4q5n30clnxu"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_33lba"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_y074n"]
+offsets = PackedFloat32Array(0, 0.0649718, 0.129944, 0.19774, 0.279661, 0.358757, 0.426554, 0.514124, 0.612994, 0.683616, 0.79096, 0.855932, 0.926554, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0.103896, 0.103896, 0.103896, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4g32b"]
+gradient = SubResource("Gradient_y074n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ke343"]
+emission_shape = 3
+emission_box_extents = Vector3(800, 450, 1)
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 24.51
+initial_velocity_max = 102.94
+angular_velocity_min = -151.45
+angular_velocity_max = -45.56
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.3
+color = Color(0.945098, 1, 1, 1)
+color_ramp = SubResource("GradientTexture1D_4g32b")
+turbulence_enabled = true
+turbulence_noise_strength = 3.25
+turbulence_noise_scale = 9.05
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.26
+turbulence_initial_displacement_min = -100.0
+turbulence_initial_displacement_max = 100.0
+
+[sub_resource type="Gradient" id="Gradient_2p07p"]
+colors = PackedColorArray(0.2592, 0.48384, 0.54, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2jsaj"]
+gradient = SubResource("Gradient_2p07p")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_33lba")
+position = Vector2(800, 450)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_ke343")
+texture = SubResource("GradientTexture2D_2jsaj")
+lifetime = 11.29
+preprocess = 11.54
+visibility_rect = Rect2(-170.792, -166.786, 350.859, 338.391)

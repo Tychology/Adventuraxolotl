@@ -1,0 +1,184 @@
+[gd_scene load_steps=18 format=3 uid="uid://e2qmnn41m0ao"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_11xg3"]
+[ext_resource type="Texture2D" uid="uid://dq6cpmt8toro0" path="res://art/Menu.jpeg" id="2_pl5dq"]
+[ext_resource type="Shader" uid="uid://dny5ursgugk6h" path="res://shaders/screen_mask.tres" id="3_4lgbm"]
+[ext_resource type="FontFile" uid="uid://3o8umqlf5sxi" path="res://fonts/Matura-MT-Script-Capitals.TTF" id="4_yqhnk"]
+[ext_resource type="PackedScene" uid="uid://nqgyxycip31v" path="res://scenes/menu_button.tscn" id="5_fe0ev"]
+[ext_resource type="PackedScene" uid="uid://bhksqj23hhrde" path="res://scenes/pane.tscn" id="6_r5jw0"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oxo5r"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_rf4dv"]
+interpolation_mode = 2
+colors = PackedColorArray(0, 0, 0, 1, 0.118581, 0.118581, 0.118581, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_snqa4"]
+gradient = SubResource("Gradient_rf4dv")
+fill_from = Vector2(0, 0.551282)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ki6if"]
+shader = ExtResource("3_4lgbm")
+
+[sub_resource type="Gradient" id="Gradient_56y43"]
+offsets = PackedFloat32Array(0, 0.19209, 0.853107, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wvttx"]
+gradient = SubResource("Gradient_56y43")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nois7"]
+emission_shape = 3
+emission_box_extents = Vector3(600, 400, 1)
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 9.8
+initial_velocity_max = 39.67
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.8
+scale_max = 1.2
+color_ramp = SubResource("GradientTexture1D_wvttx")
+turbulence_enabled = true
+turbulence_noise_strength = 15.2
+turbulence_noise_scale = 8.92
+turbulence_influence_min = 0.0
+turbulence_influence_max = 1.0
+turbulence_initial_displacement_min = -100.0
+turbulence_initial_displacement_max = 100.0
+
+[sub_resource type="Gradient" id="Gradient_y85r2"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.759358, 0.949198)
+colors = PackedColorArray(1, 1, 1, 0.615686, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e85m2"]
+gradient = SubResource("Gradient_y85r2")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l7psv"]
+blend_mode = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_6pnsl"]
+font = ExtResource("4_yqhnk")
+font_size = 192
+font_color = Color(1, 0.576471, 0.670588, 1)
+outline_color = Color(0, 1, 1, 1)
+shadow_size = 0
+
+[node name="Main Menu" type="Node"]
+script = ExtResource("1_11xg3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.643137, 0.768627, 0.945098, 1)
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+material = SubResource("CanvasItemMaterial_oxo5r")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_snqa4")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_ki6if")
+position = Vector2(828, 424)
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_nois7")
+texture = SubResource("GradientTexture2D_e85m2")
+lifetime = 10.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_l7psv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pl5dq")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -697.0
+offset_top = 52.0
+offset_right = 713.0
+offset_bottom = 314.0
+grow_horizontal = 2
+text = "Adventuraxolotl"
+label_settings = SubResource("LabelSettings_6pnsl")
+
+[node name="MarginContainer" parent="." instance=ExtResource("6_r5jw0")]
+offset_left = 657.0
+offset_top = 283.0
+offset_right = 1263.0
+offset_bottom = 1080.0
+
+[node name="NewGameButton" parent="." instance=ExtResource("5_fe0ev")]
+offset_left = 714.0
+offset_top = 323.0
+offset_right = 1206.0
+offset_bottom = 417.0
+
+[node name="Label" parent="NewGameButton" index="0"]
+text = "New Game"
+
+[node name="LoadGameButton" parent="." instance=ExtResource("5_fe0ev")]
+offset_left = 715.0
+offset_top = 458.0
+offset_right = 1207.0
+offset_bottom = 552.0
+
+[node name="Label" parent="LoadGameButton" index="0"]
+text = "Load Game"
+
+[node name="OptionsButton" parent="." instance=ExtResource("5_fe0ev")]
+offset_left = 714.0
+offset_top = 591.0
+offset_right = 1206.0
+offset_bottom = 685.0
+
+[node name="Label" parent="OptionsButton" index="0"]
+text = "Options"
+
+[node name="AddTimTamButton" parent="." instance=ExtResource("5_fe0ev")]
+offset_left = 714.0
+offset_top = 724.0
+offset_right = 1206.0
+offset_bottom = 818.0
+
+[node name="Label" parent="AddTimTamButton" index="0"]
+text = "Add Tim Tam"
+
+[node name="QuitButton" parent="." instance=ExtResource("5_fe0ev")]
+offset_left = 714.0
+offset_top = 946.0
+offset_right = 1206.0
+offset_bottom = 1040.0
+
+[node name="Label" parent="QuitButton" index="0"]
+text = "Quit"
+
+[connection signal="pressed" from="AddTimTamButton" to="." method="_on_add_tim_tam_button_pressed"]
+
+[editable path="NewGameButton"]
+[editable path="LoadGameButton"]
+[editable path="OptionsButton"]
+[editable path="AddTimTamButton"]
+[editable path="QuitButton"]

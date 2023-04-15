@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://nqgyxycip31v"]
+
+[ext_resource type="Texture2D" uid="uid://cny4smsqsp2sy" path="res://assets/Button.png" id="1_7kwkw"]
+[ext_resource type="Texture2D" uid="uid://t3j0i5ec1gsp" path="res://assets/Button_Lowlight.png" id="2_cxfia"]
+[ext_resource type="Script" path="res://scripts/OptionButton.gd" id="2_fpjfj"]
+[ext_resource type="Texture2D" uid="uid://chw2rjlcbck1s" path="res://assets/Button_Highlight.png" id="3_2v7v6"]
+[ext_resource type="FontFile" uid="uid://br5a0xbw23v5q" path="res://fonts/Timeless.ttf" id="5_ibgas"]
+
+[node name="TextureButton" type="TextureButton"]
+self_modulate = Color(0.74902, 0.74902, 0.74902, 1)
+offset_right = 492.0
+offset_bottom = 94.0
+texture_normal = ExtResource("1_7kwkw")
+texture_pressed = ExtResource("2_cxfia")
+texture_hover = ExtResource("3_2v7v6")
+texture_disabled = ExtResource("2_cxfia")
+texture_focused = ExtResource("3_2v7v6")
+script = ExtResource("2_fpjfj")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_ibgas")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true

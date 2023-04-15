@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cifbdia8imk0m"]
+
+[ext_resource type="Script" path="res://scripts/LeadersData.gd" id="1_1ic4t"]
+
+[node name="LeadersData" type="Node"]
+script = ExtResource("1_1ic4t")
